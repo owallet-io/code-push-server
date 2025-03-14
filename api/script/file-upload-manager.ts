@@ -12,7 +12,7 @@ function getAttachUploadFileFunction(maxFileSizeMb: number): express.RequestHand
     limits: {
       fileSize: maxFileSizeMb * 1048576,
     },
-  }).any();
+  }).any() as any;
 }
 
 export function fileUploadMiddleware(req: express.Request, res: express.Response, next: express.NextFunction): void {

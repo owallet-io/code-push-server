@@ -855,7 +855,7 @@ export class AzureStorage implements storage.Storage {
     let tableClient: TableClient;
     let blobServiceClient: BlobServiceClient;
 
-    if (process.env.EMULATED) {
+    if (process.env.EMULATED === 'true') {
       const devConnectionString = "UseDevelopmentStorage=true";
 
       tableServiceClient = TableServiceClient.fromConnectionString(devConnectionString);
@@ -868,7 +868,6 @@ export class AzureStorage implements storage.Storage {
 
       const _accountName = accountName ?? process.env.AZURE_STORAGE_ACCOUNT;
       const _accountKey = accountKey ?? process.env.AZURE_STORAGE_ACCESS_KEY;
-
       const tableStorageCredential = new AzureNamedKeyCredential(_accountName, _accountKey);
       const blobStorageCredential = new StorageSharedKeyCredential(_accountName, _accountKey);
 
